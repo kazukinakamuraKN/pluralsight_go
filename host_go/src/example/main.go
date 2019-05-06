@@ -2,18 +2,11 @@ package main
 
 import (
     "net/http"
-    "fmt"
 )
 
-type myHandler struct{
-    greeting string
-}
-
-func (mh myHandler) ServeHTTP(w http.ResponseWriter, r *http.Request){
-    w.Write([]byte(fmt.Sprintf("%v world", mh.greeting)))
-}
-
 func main(){
-    http.Handle("/", &myHandler{greeting: "Helloo"})
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+        w.Write([]byte("Hello World!!"))
+    })
     http.ListenAndServe(":8081", nil)
 }
