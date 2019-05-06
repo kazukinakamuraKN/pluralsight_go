@@ -1,0 +1,5 @@
+FROM golang:1.8
+WORKDIR /go/
+EXPOSE 8000
+EXPOSE 8081
+
